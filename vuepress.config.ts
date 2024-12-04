@@ -39,11 +39,8 @@ export default defineUserConfig({
     {
       mountPath:"/",
       analysis:fileUrlTreeAnalysis({
-        "/example/test.jpg":"https://example.com/test.jpg",
-        "/test1.jpg":"https://example.com/test1.jpg",
-        "/test/test2.jpg":"https://example.com/test2.jpg",
-        "/example/test3.jpg":"https://example.com/test3.jpg",
-        "/example/test/test4.jpg":"https://example.com/test4.jpg",
+        "/测试/test.jpg":"https://example.com/test.jpg",
+        "/使用说明.html":"https://jjaw.cn/"
       })
     }
   ])

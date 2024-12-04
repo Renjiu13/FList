@@ -39,17 +39,23 @@ export default defineUserConfig({
     {
       mountPath: "/",
       analysis: fileUrlTreeAnalysis({
-        "/123网盘/下载解压软件打开.jpg": "https://img.confused.us.kg/file/1732684784448_merged_123网盘.png",
         "/Github/Github汉化工具.7z": "https://github.com/robotze/GithubDesktopZhTool/releases/download/3.4.9/GithubDesktop.7z",
         "/Github/网盘图标删除器.exe": "https://github.com/Return-Log/Drive-Icon-Manager/releases/download/v2.2/Drive.Icon.Manager-v2.2-Windows-x64.exe",
-        "/Github/右键管理.exe": "https://github.com/BluePointLilac/ContextMenuManager/releases/download/3.3.3.1/ContextMenuManager.NET.4.0.exe"
+        "/Github/右键管理.exe": "https://github.com/BluePointLilac/ContextMenuManager/releases/download/3.3.3.1/ContextMenuManager.NET.4.0.exe",
+        "/123网盘/下载解压软件打开.jpg": "https://img.confused.us.kg/file/1732684784448_merged_123网盘.png"
       })
     },
     {
       mountPath:"/图片",
       analysis:fileUrlTreeAnalysis({
-        "/vcIcon01.png": "https://i0.hdslb.com/bfs/vc/18e14b236c8c0478b9f126b53dc149718c8277d6.png",
-        "/archiveIcon.png": "https://i0.hdslb.com/bfs/archive/c8fd97a40bf79f03e7b76cbc87236f612caef7b2.png"
+        "/爱国.png": "https://img.confused.us.kg/file/1732357059559_爱国-红色.png",
+        "/工作.png": "https://img.confused.us.kg/file/1732265239652_20241122164618.png"
+      })
+    },
+    {
+      mountPath:"/视频",
+      analysis:fileUrlTreeAnalysis({
+        "/哥哥.mp4": "https://img.confused.us.kg/file/1731225510419_哥哥.mp4"
       })
     }
   ])

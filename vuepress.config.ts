@@ -44,6 +44,13 @@ export default defineUserConfig({
         "/test.jpg": "https://attach.52pojie.cn/forum/202412/04/094704u3qux9uqqxuua1hm.png"
       }),
     }
+    {
+      mountPath:"/测试文件夹",
+      // 使用fileUrlTreeAnalysis 分析器，将外部 URL 文件挂载到网站
+      analysis: fileUrlTreeAnalysis({
+        "/cesh.png": "https://attach.52pojie.cn/forum/202412/04/094704u3qux9uqqxuua1hm.png"
+      })
+    }
     // ... 可以配置多个挂载路径和仓库，以此类推
   ])
 });

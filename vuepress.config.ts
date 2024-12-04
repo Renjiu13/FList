@@ -41,7 +41,35 @@ export default defineUserConfig({
       analysis: fileUrlTreeAnalysis({
         "/123网盘/下载解压软件打开.jpg": "https://img.confused.us.kg/file/1732684784448_merged_123网盘.png",
         "/Github/Github汉化工具.7z": "https://github.com/robotze/GithubDesktopZhTool/releases/download/3.4.9/GithubDesktop.7z",
-        "/Windows右键管理/ContextMenuManager.NET.4.0.exe": "https://github.com/BluePointLilac/ContextMenuManager/releases/download/3.3.3.1/ContextMenuManager.NET.4.0.exe"
+        "/右键管理/ContextMenuManager.NET.4.0.exe": "https://github.com/BluePointLilac/ContextMenuManager/releases/download/3.3.3.1/ContextMenuManager.NET.4.0.exe"
+      })
+    },
+    {
+      mountPath:"/example",
+      analysis:fileUrlTreeAnalysis({
+        "/test.jpg": "https://i2.hdslb.com/bfs/face/0770025cfefed3043df126872f026c2ea94128b3.jpg@120w_120h_1c",
+        "/vcIcon01.png": "https://i0.hdslb.com/bfs/vc/18e14b236c8c0478b9f126b53dc149718c8277d6.png",
+        "/vcIcon02.png": "https://i0.hdslb.com/bfs/vc/2c048730ce3449400cd657650f5f2e68e2fa5ef5.png",
+        "/vcIcon03.png": "https://i0.hdslb.com/bfs/vc/582b9609daf669327c460af63776f5f0c14b5c26.png",
+        "/vcIcon04.png": "https://i0.hdslb.com/bfs/vc/f5fcc108b811577571e3f54d6d46df58a9f553ed.png",
+        "/vcIcon05.png": "https://i0.hdslb.com/bfs/vc/4367bada261c826302101afa18fe41e86f545099.png",
+        "/vcIcon06.png": "https://i0.hdslb.com/bfs/vc/0ebcccd16a9fe9bb551e213de4eaf3cd5a24c8ff.png",
+        "/vcIcon07.png": "https://i0.hdslb.com/bfs/vc/21a613a7457891ed7daa559b03191df7bf551362.png",
+        "/vcIcon08.png": "https://i0.hdslb.com/bfs/vc/83b58af34fc683e529962449078a3ded7f1d2e80.png",
+        "/vcIcon09.png": "https://i0.hdslb.com/bfs/vc/6683112849dadee65749c4f7f72b83c9a9f8f537.png",
+        "/vcIcon10.png": "https://i0.hdslb.com/bfs/vc/93ab310ca3e2a24489aa1873865501adb3f81393.png",
+        "/vcIcon11.png": "https://i0.hdslb.com/bfs/vc/064a75156c568aa6a9982e2c983d2a30cb86ea94.png",
+        "/vcIcon12.png": "https://i0.hdslb.com/bfs/vc/7bb79a88a5c61724c7fd2ab009f462b744ba5b29.png",
+        "/vcIcon13.png": "https://i0.hdslb.com/bfs/vc/1b6718fe3996574889da7ef1b9c29a566fe963f4.png",
+        "/vcIcon14.png": "https://i0.hdslb.com/bfs/vc/c31995a7a80e459e165ae4ef60e323e27f497420.png",
+        "/vcIcon15.png": "https://i0.hdslb.com/bfs/vc/4a66f79212d4c6182a8e10a1eb0424f3d7c79120.png",
+        "/vcIcon16.png": "https://i0.hdslb.com/bfs/vc/30ccbdfe561bcd18a7ee457bd151b55da7a3dd3c.png",
+        "/vcIcon17.png": "https://i0.hdslb.com/bfs/vc/20ccfde3e5606d223ab230a78234e4f9ac140371.png",
+        "/vcIcon18.png": "https://i0.hdslb.com/bfs/vc/d562864113a6e6cce54b41745132a974b4576c3c.png",
+        "/vcIcon19.png": "https://i0.hdslb.com/bfs/vc/ab4fbaed481d880a618e52f97e7e1f6e5c8b7f7c.png",
+        "/vcIcon20.png": "https://i0.hdslb.com/bfs/vc/57f20e919517fc784f1e03900140274cfea2cb85.png",
+        "/vcIcon21.png": "https://i0.hdslb.com/bfs/vc/670d70b0351582e5b53855ddbf50600c03425062.png",
+        "/archiveIcon.png": "https://i0.hdslb.com/bfs/archive/c8fd97a40bf79f03e7b76cbc87236f612caef7b2.png"
       })
     }
   ])

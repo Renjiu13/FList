@@ -40,7 +40,6 @@ export default defineUserConfig({
       mountPath:"/",
       analysis:fileUrlTreeAnalysis({
         "/测试/test.jpg":"https://example.com/test.jpg",
-        "/使用说明.html":"https://jjaw.cn/"
       })
     }
   ])

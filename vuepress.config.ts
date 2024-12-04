@@ -25,7 +25,7 @@ export default defineUserConfig({
   // 静态资源文件夹路径
   public: `./public`,
   // 网站标题，标题颜色可在 src/client/css/main.css 中修改
-  title: '个人url地址',
+  title: 'FList',
   // 网站的简介，有助于搜索引擎收录
   description: 'FList_个人url地址',
   // 页面 <head> 标签内添加的额外标签。不要修改/logo.png，可以替换掉这个文件，删除logo.png会导致构建出错。

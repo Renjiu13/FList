@@ -37,27 +37,6 @@ export default defineUserConfig({
   theme: FileList([
     // 挂载路径为 /example
     {
-      mountPath: "/example",
-      // 使用 fileUrlTreeAnalysis 分析器，将外部 URL 文件挂载到网站
-      analysis: fileUrlTreeAnalysis({
-        // 将 /test.jpg 路径挂载到 https://attach.52pojie.cn/forum/202412/04/094704u3qux9uqqxuua1hm.png
-        "/test.jpg": "https://attach.52pojie.cn/forum/202412/04/094704u3qux9uqqxuua1hm.png"
-      })
-    },
-    {
-      mountPath: "/测试文件夹",
-      // 使用 fileUrlTreeAnalysis 分析器，将外部 URL 文件挂载到网站
-      analysis: fileUrlTreeAnalysis({
-        "/cesh.png": "https://attach.52pojie.cn/forum/202412/04/094704u3qux9uqqxuua1hm.png"
-      })
-    },
-    {
-      mountPath:"/测试",
-      analysis:fileUrlTreeAnalysis({
-        "/asfdgg.png":"https://attach.52pojie.cn/forum/202412/04/094704u3qux9uqqxuua1hm.png"
-      })
-    },
-    {
       mountPath:"/",
       analysis:fileUrlTreeAnalysis({
         "/example/test.jpg":"https://example.com/test.jpg",

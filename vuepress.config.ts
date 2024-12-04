@@ -41,7 +41,6 @@ export default defineUserConfig({
       analysis:fileUrlTreeAnalysis({
         "/123网盘/下载解压软件打开.jpg":"https://img.confused.us.kg/file/1732684784448_merged_123网盘.png",
         "/Github/Github汉化工具.7z":"https://github.com/robotze/GithubDesktopZhTool/releases/download/3.4.9/GithubDesktop.7z"
-        "/Windows右键管理/ContextMenuManager.NET.4.0.exe": "https://github.com/BluePointLilac/ContextMenuManager/releases/download/3.3.3.1/ContextMenuManager.NET.4.0.exe",
       })
     }
   ])

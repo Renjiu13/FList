@@ -50,6 +50,12 @@ export default defineUserConfig({
       analysis: fileUrlTreeAnalysis({
         "/cesh.png": "https://attach.52pojie.cn/forum/202412/04/094704u3qux9uqqxuua1hm.png"
       })
+    },
+    {
+      mountPath:"/测试",
+      analysis:fileUrlTreeAnalysis({
+        "/asfdgg.png":"https://attach.52pojie.cn/forum/202412/04/094704u3qux9uqqxuua1hm.png"
+      })
     }
   ])
 });

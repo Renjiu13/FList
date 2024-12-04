@@ -39,7 +39,7 @@ export default defineUserConfig({
     {
       mountPath:"/",
       analysis:fileUrlTreeAnalysis({
-        "/测试/test.jpg":"https://img.confused.us.kg/file/1732684784448_merged_123网盘.png",
+        "/123网盘/下载解压软件打开.jpg":"https://img.confused.us.kg/file/1732684784448_merged_123网盘.png",
       })
     }
   ])

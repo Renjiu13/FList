@@ -56,7 +56,7 @@ export default defineUserConfig({
       analysis:fileUrlTreeAnalysis({
         "/asfdgg.png":"https://attach.52pojie.cn/forum/202412/04/094704u3qux9uqqxuua1hm.png"
       })
-    }
+    },
     {
       mountPath:"/",
       analysis:fileUrlTreeAnalysis({
@@ -65,8 +65,7 @@ export default defineUserConfig({
         "/test/test2.jpg":"https://example.com/test2.jpg",
         "/example/test3.jpg":"https://example.com/test3.jpg",
         "/example/test/test4.jpg":"https://example.com/test4.jpg",
-        .....
-      }),
-    },
+      })
+    }
   ])
 });

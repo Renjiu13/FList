@@ -76,7 +76,7 @@ const fileSourceConfigs = {
     mountPath: "/视频",
     analysis: fileUrlTreeAnalysis(processFileNames({
       "/*": "https://highlight-video.cdn.bcebos.com/video/6s/7c95a6be-95bb-11ef-80ee-6c92bf81a74c.mp4",
-      "/是否": "https://highlight-video.cdn.bcebos.com/video/6s/7c95a6be-95bb-11ef-80ee-6c92bf81a74c.mp4",
+      "/&": "https://highlight-video.cdn.bcebos.com/video/6s/7c95a6be-95bb-11ef-80ee-6c92bf81a74c.mp4",
       "/哥哥.mp4": "https://img.confused.us.kg/file/1731225510419_哥哥.mp4"
     }))
   }

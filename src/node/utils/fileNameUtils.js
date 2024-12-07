@@ -56,22 +56,24 @@ export function autoFileName(url, placeholder = '*', prefix = '') {
 export function processFileNames(fileMap, options = {}) {
   const { prefix = '' } = options;
   const processedMap = {};
-  
+
   Object.entries(fileMap).forEach(([originalPath, url]) => {
+    let newPath = originalPath;
+
     if (originalPath.includes('*')) {
       // 使用原始文件名替换 "*"
       const newFileName = autoFileName(url, '*', prefix);
-      const newPath = originalPath.replace('*', newFileName);
-      processedMap[newPath] = url;
-    } else if (originalPath.includes('&')) {
+      newPath = newPath.replace('*', newFileName);
+    }
+
+    if (newPath.includes('&')) {
       // 使用时间戳文件名替换 "&"
       const newFileName = autoFileName(url, '&', prefix);
-      const newPath = originalPath.replace('&', newFileName);
-      processedMap[newPath] = url;
-    } else {
-      // 保持原样
-      processedMap[originalPath] = url;
+      newPath = newPath.replace('&', newFileName);
     }
+
+    // 将新路径与 URL 映射
+    processedMap[newPath] = url;
   });
 
   return processedMap;

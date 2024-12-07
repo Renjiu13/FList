@@ -57,7 +57,7 @@ const fileSourceConfigs = {
     mountPath: "/",
     analysis: fileUrlTreeAnalysis({
       "/Github/Github汉化工具.7z": "https://github.com/robotze/GithubDesktopZhTool/releases/download/3.4.9/GithubDesktop.7z",
-      "/Alist/虚拟机.exe": "http://192.168.1.36:5233/d/%E6%B5%8F%E8%A7%88%E4%BA%91/VMware/VMware-workstation-17.6.1-24319023.exe",
+      "/Alist/虚拟机.exe": "http:/测试%BA%91/VMware/VMware-workstation-17.6.1-24319023.exe",
       "/Github/网盘图标删除器.exe": "https://github.com/Return-Log/Drive-Icon-Manager/releases/download/v2.2/Drive.Icon.Manager-v2.2-Windows-x64.exe",
     })
   },

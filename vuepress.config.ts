@@ -55,20 +55,20 @@ const fileSourceConfigs = {
   // 主页文件列表
   mainFiles: {
     mountPath: "/",
-    analysis: fileUrlTreeAnalysis(processFileNames({
+    analysis: fileUrlTreeAnalysis({
       "/Github/Github汉化工具.7z": "https://github.com/robotze/GithubDesktopZhTool/releases/download/3.4.9/GithubDesktop.7z",
-      "/Alist/虚拟机.exe": "http:/测试%BA%91/VMware/VMware-workstation-17.6.1-24319023.exe",
+      "/Alist/虚拟机.exe": "http:/%BA%91/VMware/VMware-workstation-17.6.1-24319023.exe",
       "/Github/网盘图标删除器.exe": "https://github.com/Return-Log/Drive-Icon-Manager/releases/download/v2.2/Drive.Icon.Manager-v2.2-Windows-x64.exe",
-    }))
+    })
   },
   
   // 图片资源
   imageFiles: {
     mountPath: "/图片",
-    analysis: fileUrlTreeAnalysis(processFileNames({
+    analysis: fileUrlTreeAnalysis({
       "/爱国.png": "https://img.confused.us.kg/file/1732357059559_爱国-红色.png",
       "/工作.png": "https://img.confused.us.kg/file/1732265239652_20241122164618.png"
-    }))
+    })
   },
   
   // 视频资源

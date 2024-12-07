@@ -1,44 +1,56 @@
 // src/node/utils/fileNameUtils.js
 
-import { v4 as uuidv4 } from 'uuid';
-import crypto from 'crypto';
-
 /**
- * 处理文件名，避免 URL 冲突。使用哈希值来确保唯一性。
- * @param {Object} fileNames 文件名映射对象
- * @returns {Object} 新的文件名映射对象
+ * 从 URL 自动提取文件名
+ * @param {string} url - 要处理的文件 URL
+ * @param {Object} options - 可选配置
+ * @returns {string} 处理后的文件名
  */
-export function processFileNames(fileNames) {
-  const result = {};
-  const seenUrls = new Map(); // 用来存储已见过的 URL
+export function autoFileName(url, type = '*', prefix = '') {
+  try {
+    const urlObject = new URL(url);
+    const pathParts = urlObject.pathname.split('/');
+    const originalFileName = pathParts[pathParts.length - 1];
+    const fileExtension = originalFileName.split('.').pop();
 
-  // 遍历每个文件路径及对应的 URL
-  for (const [filePath, url] of Object.entries(fileNames)) {
-    // 获取文件名，使用正则提取文件名部分
-    const fileName = filePath.split('/').pop();
-    
-    // 检查 URL 是否已经出现过
-    let uniqueFileName;
-    if (seenUrls.has(url)) {
-      uniqueFileName = seenUrls.get(url); // 如果 URL 已经存在，使用存储的文件名
-    } else {
-      // 生成 8 位 UUID 或哈希来避免文件名冲突
-      uniqueFileName = filePath.replace('*', fileName).replace('&', generateHash(url));
-      seenUrls.set(url, uniqueFileName); // 记录这个 URL 的文件名
+    switch(type) {
+      case '*':
+        // 使用原始文件名
+        return `${prefix}${originalFileName}`;
+      case '&':
+        // 使用时间戳作为文件名
+        const timestamp = Date.now();
+        return `${prefix}${timestamp}.${fileExtension}`;
+      default:
+        return `${prefix}${originalFileName}`;
     }
-
-    // 创建新的文件名映射
-    result[uniqueFileName] = url;
+  } catch (error) {
+    console.error('URL 处理错误:', error);
+    return `${prefix}unknown_file_${Date.now()}.bin`;
   }
-
-  return result;
 }
 
 /**
- * 生成一个基于 URL 的哈希值（前 8 位）
- * @param {string} url 要哈希化的 URL
- * @returns {string} 生成的哈希值
+ * 批量处理文件名的函数
+ * @param {Object} fileMap - 原始文件映射
+ * @param {Object} options - 配置选项
+ * @returns {Object} 处理后的文件映射
  */
-function generateHash(url) {
-  return crypto.createHash('md5').update(url).digest('hex').slice(0, 8);
+export function processFileNames(fileMap, options = {}) {
+  const processedMap = {};
+  
+  Object.entries(fileMap).forEach(([originalPath, url]) => {
+    if (originalPath.includes('*') || originalPath.includes('&')) {
+      // 通配符处理
+      const wildcardType = originalPath.includes('*') ? '*' : '&';
+      const newFileName = autoFileName(url, wildcardType, options.prefix || '');
+      const newPath = originalPath.replace(/[*&]/, newFileName);
+      processedMap[newPath] = url;
+    } else {
+      // 保持原样
+      processedMap[originalPath] = url;
+    }
+  });
+
+  return processedMap;
 }

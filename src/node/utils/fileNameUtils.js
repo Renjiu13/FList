@@ -1,34 +1,32 @@
 // src/node/utils/fileNameUtils.js
 
 /**
- * 从 URL 自动提取文件名
- * @param {string} url - 要处理的文件 URL
- * @param {string} placeholder - 占位符类型，'*' 表示原始文件名，'&' 表示8位UUID文件名
- * @param {string} prefix - 文件名前缀
- * @returns {string} 处理后的文件名
+ * 提取文件名信息
+ * @param {string} fileName - 原始文件名
+ * @returns {Object} 包含文件名详细信息的对象
  */
-export function autoFileName(url, placeholder = '*', prefix = '') {
-  try {
-    const urlObject = new URL(url);
-    const pathParts = urlObject.pathname.split('/');
-    const originalFileName = pathParts[pathParts.length - 1];
-    const fileExtension = originalFileName.split('.').pop();
-
-    switch (placeholder) {
-      case '*':
-        // 使用原始文件名
-        return `${prefix}${originalFileName}`;
-      case '&':
-        // 使用 8 位 UUID 作为文件名
-        const uuid = generateUUID(8);  // 生成 8 位 UUID
-        return `${prefix}${uuid}.${fileExtension}`;
-      default:
-        return `${prefix}${originalFileName}`;
-    }
-  } catch (error) {
-    console.error('URL 处理错误:', error);
-    return `${prefix}unknown_file_${Date.now()}.bin`;
+function extractFileInfo(fileName) {
+  // 处理特殊情况和多点文件名
+  const parts = fileName.split('.');
+  
+  // 没有扩展名的情况
+  if (parts.length === 1) {
+    return {
+      baseName: fileName,
+      extension: '',
+      fullName: fileName
+    };
   }
+  
+  // 标准情况：最后一个作为扩展名
+  const extension = parts.pop().toLowerCase();
+  const baseName = parts.join('.');
+  
+  return {
+    baseName,
+    extension, 
+    fullName: fileName
+  };
 }
 
 /**
@@ -40,6 +38,41 @@ function generateUUID(length = 8) {
   // 生成一个标准的 UUID 字符串并返回前 `length` 个字符
   const uuid = crypto.randomUUID();  // 使用浏览器内置的 crypto API 生成 UUID
   return uuid.replace(/-/g, '').slice(0, length);  // 去除 '-' 并取前 `length` 位
+}
+
+/**
+ * 从 URL 自动提取文件名
+ * @param {string} url - 要处理的文件 URL
+ * @param {string} placeholder - 占位符类型，'*' 表示原始文件名，'&' 表示8位UUID文件名
+ * @param {string} prefix - 文件名前缀
+ * @returns {string} 处理后的文件名
+ */
+export function autoFileName(url, placeholder = '*', prefix = '') {
+  try {
+    const urlObject = new URL(url);
+    const pathParts = urlObject.pathname.split('/');
+    const originalFileName = decodeURIComponent(pathParts[pathParts.length - 1]);
+    
+    // 使用新的文件名解析方法
+    const { baseName, extension, fullName } = extractFileInfo(originalFileName);
+
+    switch (placeholder) {
+      case '*':
+        // 使用原始文件名
+        return `${prefix}${fullName}`;
+      case '&':
+        // 使用 8 位 UUID 作为文件名
+        const uuid = generateUUID(8);
+        return extension 
+          ? `${prefix}${uuid}.${extension}`  // 有扩展名
+          : `${prefix}${uuid}`;  // 无扩展名
+      default:
+        return `${prefix}${fullName}`;
+    }
+  } catch (error) {
+    console.error('URL 处理错误:', error);
+    return `${prefix}unknown_file_${Date.now()}.bin`;
+  }
 }
 
 /**

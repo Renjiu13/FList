@@ -78,6 +78,7 @@ const fileSourceConfigs = {
     analysis: fileUrlTreeAnalysis(processFileNames({
       "/*": "https://highlight-video.cdn.bcebos.com/video/6s/7c95a6be-95bb-11ef-80ee-6c92bf81a74c.mp4",
       "/&": "https://highlight-video.cdn.bcebos.com/video/6s/7c95a6be-95bb-11ef-80ee-6c92bf81a74c.mp4",
+      "/老师不要跑.mp4": "https://cloud.zsxwz.com/aliyun/%E8%A7%86%E9%A2%91/%E8%80%81%E5%B8%88%E4%B8%8D%E8%A6%81%E8%B7%91/%E4%B8%8D%E8%A6%81%E8%B7%91.mp4",
       "/哥哥.mp4": "https://img.confused.us.kg/file/1731225510419_哥哥.mp4"
     }))
   }

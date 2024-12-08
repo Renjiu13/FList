@@ -9,9 +9,19 @@
  */
 export function autoFileName(url, type = '*', prefix = '') {
   try {
+    // 验证 URL 是否有效
+    if (typeof url !== 'string' || !url.trim()) {
+      throw new Error('Invalid URL provided');
+    }
+
     const urlObject = new URL(url);
     const pathParts = urlObject.pathname.split('/');
     const originalFileName = pathParts[pathParts.length - 1];
+
+    // 验证原始文件名是否有效
+    if (!originalFileName) {
+      throw new Error('Unable to extract filename from URL');
+    }
 
     switch (type) {
       case '*':
@@ -40,9 +50,20 @@ export function autoFileName(url, type = '*', prefix = '') {
  * @returns {Object} 处理后的文件映射
  */
 export function processFileNames(fileMap, options = {}) {
+  // 验证 fileMap 是否为对象
+  if (typeof fileMap !== 'object' || fileMap === null) {
+    throw new Error('Invalid fileMap provided');
+  }
+
   const processedMap = {};
 
   Object.entries(fileMap).forEach(([originalPath, url]) => {
+    // 验证 originalPath 和 url 是否为字符串
+    if (typeof originalPath !== 'string' || typeof url !== 'string') {
+      console.warn(`Invalid entry in fileMap: ${originalPath} => ${url}`);
+      return;
+    }
+
     if (originalPath.includes('*') || originalPath.includes('&')) {
       const wildcardType = originalPath.includes('*') ? '*' : '&';
       const newFileName = autoFileName(url, wildcardType, options.prefix || '');

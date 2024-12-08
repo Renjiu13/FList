@@ -76,7 +76,7 @@ const fileSourceConfigs = {
    imageFiles: {
     mountPath: "/软件",
     analysis: fileUrlTreeAnalysis(processFileNames({
-      "/*": "https://img.confused.us.kg/file/1733632212214_fabric-installer-1.0.1.exe"
+      "/MC服务器核心_Win版fabric.exe": "https://img.confused.us.kg/file/1733632212214_fabric-installer-1.0.1.exe"
     }))
   },
   

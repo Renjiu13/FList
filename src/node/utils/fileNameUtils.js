@@ -1,9 +1,10 @@
-// src/node/utils/fileNameUtils.js
+// src/node/utils/fileNameUtils.js 
 
 /**
  * 从 URL 自动提取文件名
  * @param {string} url - 要处理的文件 URL
- * @param {Object} options - 可选配置
+ * @param {string} type - 代表符号，默认为 '*'，表示使用原始文件名
+ * @param {string} prefix - 文件名前缀
  * @returns {string} 处理后的文件名
  */
 export function autoFileName(url, type = '*', prefix = '') {
@@ -13,14 +14,16 @@ export function autoFileName(url, type = '*', prefix = '') {
     const originalFileName = pathParts[pathParts.length - 1];
     const fileExtension = originalFileName.split('.').pop();
 
+    // 生成一个唯一的标识符
+    const uniqueSuffix = Date.now() + Math.random().toString(36).substr(2, 9);
+
     switch(type) {
       case '*':
         // 使用原始文件名
         return `${prefix}${originalFileName}`;
       case '&':
-        // 使用时间戳作为文件名
-        const timestamp = Date.now();
-        return `${prefix}${timestamp}.${fileExtension}`;
+        // 使用时间戳和唯一后缀作为文件名，避免重复
+        return `${prefix}${Date.now()}_${uniqueSuffix}.${fileExtension}`;
       default:
         return `${prefix}${originalFileName}`;
     }
@@ -41,9 +44,11 @@ export function processFileNames(fileMap, options = {}) {
   
   Object.entries(fileMap).forEach(([originalPath, url]) => {
     if (originalPath.includes('*') || originalPath.includes('&')) {
-      // 通配符处理
+      // 处理含有代表符号的路径
       const wildcardType = originalPath.includes('*') ? '*' : '&';
       const newFileName = autoFileName(url, wildcardType, options.prefix || '');
+      
+      // 用唯一的文件名替换路径中的代表符号
       const newPath = originalPath.replace(/[*&]/, newFileName);
       processedMap[newPath] = url;
     } else {

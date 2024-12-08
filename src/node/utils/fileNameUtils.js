@@ -12,19 +12,19 @@ export function autoFileName(url, type = '*', prefix = '') {
     const urlObject = new URL(url);
     const pathParts = urlObject.pathname.split('/');
     const originalFileName = pathParts[pathParts.length - 1];
-    const fileExtension = originalFileName.split('.').pop();
 
-    // 生成一个唯一的标识符
-    const uniqueSuffix = Date.now() + Math.random().toString(36).substr(2, 9);
-
-    switch(type) {
+    switch (type) {
       case '*':
-        // 使用原始文件名
+        // 使用原始文件名（包含扩展名）
         return `${prefix}${originalFileName}`;
       case '&':
-        // 使用时间戳和唯一后缀作为文件名，避免重复
-        return `${prefix}${Date.now()}_${uniqueSuffix}.${fileExtension}`;
+        // 使用时间戳和唯一标识符生成文件名
+        const timestamp = Date.now();
+        const uniqueSuffix = Math.random().toString(36).substr(2, 9);
+        const fileExtension = originalFileName.split('.').pop();
+        return `${prefix}${timestamp}_${uniqueSuffix}.${fileExtension}`;
       default:
+        // 默认返回原始文件名
         return `${prefix}${originalFileName}`;
     }
   } catch (error) {
@@ -41,18 +41,23 @@ export function autoFileName(url, type = '*', prefix = '') {
  */
 export function processFileNames(fileMap, options = {}) {
   const processedMap = {};
-  
+
   Object.entries(fileMap).forEach(([originalPath, url]) => {
     if (originalPath.includes('*') || originalPath.includes('&')) {
-      // 处理含有代表符号的路径
       const wildcardType = originalPath.includes('*') ? '*' : '&';
       const newFileName = autoFileName(url, wildcardType, options.prefix || '');
-      
-      // 用唯一的文件名替换路径中的代表符号
-      const newPath = originalPath.replace(/[*&]/, newFileName);
+
+      // 替换路径中的通配符符号
+      let newPath = originalPath;
+      if (originalPath.includes('*')) {
+        newPath = newPath.replace('*', newFileName);
+      }
+      if (originalPath.includes('&')) {
+        newPath = newPath.replace('&', newFileName);
+      }
       processedMap[newPath] = url;
     } else {
-      // 保持原样
+      // 保持原路径和 URL 不变
       processedMap[originalPath] = url;
     }
   });

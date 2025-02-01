@@ -53,11 +53,14 @@ const siteBaseConfig = {
  */
 const fileSourceConfigs = {
   // 主页文件列表
+
+  // "/*"代表原始名称 "/&"代表时间戳名称
+
   mainFiles: {
     mountPath: "/",
     analysis: fileUrlTreeAnalysis(processFileNames({
       "/Github/Github汉化工具.7z": "https://github.com/robotze/GithubDesktopZhTool/releases/download/3.4.9/GithubDesktop.7z",
-      "/Github/*": "https://github.com/BluePointLilac/ContextMenuManager/releases/download/3.3.3.1/ContextMenuManager.zip",
+      "/Github/Windows右键菜单管理程序.zip": "https://github.com/BluePointLilac/ContextMenuManager/releases/download/3.3.3.1/ContextMenuManager.zip",
       "/Alist/虚拟机.exe": "http:/%BA%91/VMware/VMware-workstation-17.6.1-24319023.exe",
       "/Github/网盘图标删除器.exe": "https://github.com/Return-Log/Drive-Icon-Manager/releases/download/v2.2/Drive.Icon.Manager-v2.2-Windows-x64.exe",
     }))
@@ -86,8 +89,6 @@ const fileSourceConfigs = {
     analysis: fileUrlTreeAnalysis(processFileNames({
       "/*": "https://highlight-video.cdn.bcebos.com/video/6s/7c95a6be-95bb-11ef-80ee-6c92bf81a74c.mp4",
       "/&": "https://highlight-video.cdn.bcebos.com/video/6s/7c95a6be-95bb-11ef-80ee-6c92bf81a74c.mp4",
-      "/吾爱破解看到的.mp4": "https://vd2.bdstatic.com/mda-pj1mjtg4zerq8bdj/720p/h264/1696259672838829719/mda-pj1mjtg4zerq8bdj.mp4",
-      "/老师不要跑.mp4": "https://ccp-bj29-video-preview.oss-enet.aliyuncs.com/lt/29AC9873F1239ADFCF6BF8135B688DE0C6A7A74E_1332508639__sha1_bj29_1b841d41/SD/media.m3u8?di=bj29&dr=1236922520&f=65fe199b71d74d32e2814cbfb2781c4c596cfa70&pds-params=%7B%22ap%22%3A%2276917ccccd4441c39457a04f6084fb2f%22%7D&security-token=CAISvgJ1q6Ft5B2yfSjIr5bCIePuuax40qqORlPhiTcHXPdDgpLbjTz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNWbGJxyFq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneAzbd20qV7uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSi0fwRTvXtuMkagAFuGKHa4gEcJylp21YGenQupv3hfZrraU%2FTvSnDjmSywuSh4JrGMHfjj35myZYB1PJV51s%2BdvC4gKdlgYP5ejKf%2FZikMm7calNDUBX8ZJ2Osh9LxBd0V0EkkYQsg07wXRU08mk%2Fy5KlIf84tcRf8UOZbyjEY2py9LR6OrlsoQJIJyAA&u=b34708dd2cf84ae5ac0b0f022a5aa8fe&x-oss-access-key-id=STS.NUwjYZTsYeheDuPm7RPxomWpo&x-oss...",
       "/哥哥.mp4": "https://img.confused.us.kg/file/1731225510419_哥哥.mp4"
     }))
   }
